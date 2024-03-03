@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { brainwave } from "../assets";
 import { navigation } from "../constants";
 import { useLocation } from "react-router-dom";
+import { disablePageScroll, enablePageScroll } from "scroll-lock";
+
 import Button from "./Button";
 import MenuSvg from "../assets/svg/MenuSvg";
 
@@ -13,16 +15,25 @@ const Header = () => {
   const [openNavigation, setOpenNavigation] = useState(false);
 
   const toggleNavigation = () => {
-    setOpenNavigation((prev) => !prev);
+    if (openNavigation) {
+      setOpenNavigation(false);
+      enablePageScroll;
+    } else {
+      setOpenNavigation(true);
+      disablePageScroll;
+    }
   };
 
   const handleClick = () => {
+    if (!openNavigation) return;
+
+    enablePageScroll();
     setOpenNavigation(false);
   };
 
   return (
     <div
-      className={`fixed top-0 w-full left-0 z-50 bg-n-8/90 backdrop-blur-sm border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm ${
+      className={`fixed top-0 w-full left-0 z-50 border-b border-n-6 lg:bg-n-8/90  ${
         openNavigation ? "bg-n-8" : "bg-n-8/90 backdrop-blur-sm "
       }`}
     >
@@ -38,6 +49,7 @@ const Header = () => {
           <div className="relative z-2  flex flex-col items-center justify-center m-auto lg:flex-row">
             {navigation.map((item) => (
               <a
+                onClick={handleClick}
                 key={item.id}
                 href={item.url}
                 className={` block relative font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1 ${
@@ -51,10 +63,10 @@ const Header = () => {
                 {item.title}
               </a>
             ))}
-
-            <HamburgerMenu />
           </div>
+          <HamburgerMenu />
         </nav>
+
         <a
           href="#signup"
           className="button hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block"
