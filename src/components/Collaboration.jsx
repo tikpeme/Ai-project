@@ -4,6 +4,8 @@ import Section from "./Section";
 import { brainwaveSymbol, check } from "../../public/assets";
 import Button from "./Button";
 
+import { LeftCurve, RightCurve } from "./design/Collaboration";
+
 const Collaboration = () => {
   return (
     <Section crosses>
@@ -69,6 +71,8 @@ const Collaboration = () => {
                 </li>
               ))}
             </ul>
+            <LeftCurve></LeftCurve>
+            <RightCurve></RightCurve>
           </div>
         </div>
       </div>
