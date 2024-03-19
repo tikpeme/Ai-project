@@ -1,4 +1,3 @@
-import React from "react";
 import ButtonSvg from "../../public/assets/svg/ButtonSvg";
 
 const Button = ({

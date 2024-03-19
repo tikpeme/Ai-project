@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { brainwave } from "../../public/assets";
 import { navigation } from "../constants";
 import { useLocation } from "react-router-dom";
