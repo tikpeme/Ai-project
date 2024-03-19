@@ -34,15 +34,13 @@ const PricingList = () => {
           </Button>
           <ul>
             {item.features.map((feature, index) => (
-              <>
-                <li
-                  className="flex items-start py-5 border-t border-n-6"
-                  key={index}
-                >
-                  <img src={check} width={24} height={24} alt="Check" />
-                  <p className="body-2 ml-4">{feature}</p>
-                </li>
-              </>
+              <li
+                className="flex items-start py-5 border-t border-n-6"
+                key={index}
+              >
+                <img src={check} width={24} height={24} alt="Check" />
+                <p className="body-2 ml-4">{feature}</p>
+              </li>
             ))}
           </ul>
         </div>
